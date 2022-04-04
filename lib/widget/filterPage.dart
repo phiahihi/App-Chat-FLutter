@@ -24,10 +24,12 @@ class _SearchPageState extends State<SearchPage> {
           onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
           child: Scaffold(
             body: CustomScrollView(
+              shrinkWrap: true,
               slivers: [
                 SliverAppBar(
+                  // leading: BackButton(),
                   floating: true,
-                  iconTheme: const IconThemeData(
+                  iconTheme: IconThemeData(
                     color: Colors.black,
                   ),
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -42,7 +44,7 @@ class _SearchPageState extends State<SearchPage> {
                           Expanded(
                               child: searchFilter(
                                 search: txtSearch,
-                                label: "Search Anyone",
+                                hintText: "Search Anyone",
                                 changed: (value) => ( setState(() => txtSearch = value)),
                               ))
                         ],
@@ -52,7 +54,9 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ),
                 SliverList(
+
                     delegate: SliverChildListDelegate([
+
                       FutureBuilder<List<User>>(
                           future: Provider.of<chatController>(context, listen: false).filterSearch(txtSearch),
                           builder: (context, snapshot) {
@@ -76,8 +80,10 @@ class _SearchPageState extends State<SearchPage> {
                                   ),
                                   ListView.builder(
                                     physics: const NeverScrollableScrollPhysics(),
+                                    // addAutomaticKeepAlives: true,
                                     itemCount: snapshot.data!.length,
-                                    itemBuilder: (context, index) => UserItem(user: snapshot.data![index])
+                                    itemBuilder: (context, index) => UserItem(user: snapshot.data![index]),
+                                    shrinkWrap: true,
                                   )
                                 ],
                               );
@@ -90,6 +96,7 @@ class _SearchPageState extends State<SearchPage> {
               ],
             ),
           ),
-        ));
+        )
+    );
   }
 }

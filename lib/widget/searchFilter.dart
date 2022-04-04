@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class searchFilter extends StatefulWidget {
-  String label;
+  String hintText;
   String search;
   ValueChanged<String>? changed;
   VoidCallback? tap;
@@ -9,7 +9,7 @@ class searchFilter extends StatefulWidget {
    searchFilter({
     Key? key,
     this.tap,
-    required this.label,
+    required this.hintText,
     this.search = "",
     this.changed,
   }) : super(key: key);
@@ -36,7 +36,7 @@ class _searchFilterState extends State<searchFilter> {
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: widget.label,
+            hintText: widget.hintText,
             prefixIcon: const Icon(Icons.search, color: Color.fromRGBO(246, 105, 105, 1)),
           ),
           onChanged: widget.changed,

@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          // leading: BackButton(),
           floating: true,
           iconTheme: const IconThemeData(
             color: Colors.black,
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.all(5),
               child: searchFilter(
-                label: "Search Anyone",
+                hintText: "Search Anyone",
                 tap: () {
                   Navigator.push(
                     context,

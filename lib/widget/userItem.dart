@@ -47,7 +47,7 @@ class UserItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20,),
-              SizedBox(
+              Container(
                 width: 170,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,7 @@ class UserItem extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              Container(
                 width: MediaQuery.of(context).size.width - 266,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
